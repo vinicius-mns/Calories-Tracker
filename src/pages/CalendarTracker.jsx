@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Calendar_tracker() {
+export default function CalendarTracker() {
   return(
     <div>
       <h1>Calendar</h1>
