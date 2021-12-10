@@ -8,8 +8,8 @@ export default function Rotas() {
   return(
     <div>
       <Switch>
-        <Route path="/Calendar_tracker" component={ Calendar_tracker }/>
-        <Route path="/Weight_tracker" component={ Weigth_tracker }/>
+        <Route path="/calendar_tracker" component={ Calendar_tracker }/>
+        <Route path="/weight_tracker" component={ Weigth_tracker }/>
         <Route exact path="/" component={ Home } />
       </Switch>
     </div>

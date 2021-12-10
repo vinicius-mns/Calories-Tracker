@@ -1,0 +1,15 @@
+* {
+  color: black;
+  background-color: white;
+  max-width: 500px;
+  text-decoration: none;
+  border-radius: 3px;
+}
+
+button {
+  border: none;
+  width: 90%;
+  height: 60px;
+}
+
+

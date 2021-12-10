@@ -1,0 +1,25 @@
+.card_component {
+  background-color: rosybrown;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 50%;
+  width: 90%;
+  transform: translateY(-50%);
+  margin: 0% auto;
+  height: 300px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.link {
+  background-color: transparent;
+  width: 100%;
+  height: 60px;
+
+  display: flex;
+  justify-content: center;
+}
