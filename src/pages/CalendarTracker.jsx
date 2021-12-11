@@ -1,9 +1,10 @@
 import React from 'react';
+import Calendar from '../components/Calendar';
 
 export default function CalendarTracker() {
   return(
     <div>
-      <h1>Calendar</h1>
+      <Calendar />
     </div>
   );
 }
