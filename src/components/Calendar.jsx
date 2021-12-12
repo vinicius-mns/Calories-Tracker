@@ -12,12 +12,46 @@ export default function Calendar() {
   const [ days, setDays ] = useState(december)
   const [ modal, setModal ] = useState(false)
   const [ day, setDay ] = useState('')
+  const [ kcal, setKcal ] = useState('')
+  const [ exercise, setExercise ] = useState('')
 
   function handleClick({target:{id}}) {
     const day = id - 1 
 
     setDay(day)
     setModal(true)
+  }
+
+  function handleChange({target:{value}}) {
+    const array = value.split(' ')
+    
+    array.forEach((a,b) => {
+      if(a === 'kcal') {
+        const kal = array[ b-1 ]
+
+        kal >= 100 && setKcal('aa')
+        kal >= 200 && setKcal('bb')
+        kal >= 300 && setKcal('cc')
+
+      }
+    })
+    
+    array.forEach((a,b) => {
+      if(a === 'exercicio' || a === 'exercício' || a === 'exercicios' || a === 'exercícios' ) {
+        const fiz = array[ b - 1].toLowerCase()
+        const nao = array[ b - 2 ].toLowerCase()
+
+        if(fiz === 'fiz') {
+          if(nao === undefined) {
+            setExercise('sim')
+          } else if (nao === 'nao' || nao === 'não') {
+            setExercise('nao')
+          } else {
+            setExercise('sim')
+          }
+        }
+      }
+    })
   }
 
   function Modal() {
@@ -30,13 +64,17 @@ export default function Calendar() {
 
         <div className='main'>
           <p>Diário</p>
-          <textarea name="diario" id="diario" cols="30" rows="10" placeholder='Comi 800kcal e
-          não fiz exercicios' />
+          <textarea
+            onChange={ handleChange }
+            cols="30"
+            rows="10"
+            placeholder='Comi 800kcal e não fiz exercicios' 
+          />
         </div>
 
         <div className='final' >
           <div className='result box'>
-            <div className='circulo' />
+            <div className={`circulo ${exercise} ${kcal}`}/>
           </div>
 
           <div className='box'>
