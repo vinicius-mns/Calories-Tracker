@@ -32,19 +32,21 @@ export default function Calendar() {
         kal >= 100 && setKcal('aa')
         kal >= 200 && setKcal('bb')
         kal >= 300 && setKcal('cc')
+        kal >= 400 && setKcal('dd')
+        kal >= 500 && setKcal('ee')
 
       }
     })
     
     array.forEach((a,b) => {
       if(a === 'exercicio' || a === 'exercício' || a === 'exercicios' || a === 'exercícios' ) {
-        const fiz = array[ b - 1].toLowerCase()
-        const nao = array[ b - 2 ].toLowerCase()
+        const fiz = array[ b - 1]
+        const nao = array[ b - 2 ]
 
-        if(fiz === 'fiz') {
+        if(fiz.toLowerCase() === 'fiz') {
           if(nao === undefined) {
             setExercise('sim')
-          } else if (nao === 'nao' || nao === 'não') {
+          } else if (nao.toLowerCase() === 'nao' || nao.toLowerCase() === 'não') {
             setExercise('nao')
           } else {
             setExercise('sim')
