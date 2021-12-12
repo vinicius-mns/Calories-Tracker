@@ -9,7 +9,7 @@ const december = ['x','x',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,
 const DAYS_OF_WEEk = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom']
 
 export default function Calendar() {
-  const [ days, setDays ] = useState(december)
+  const [ days ] = useState(december)
   const [ modal, setModal ] = useState(false)
   const [ day, setDay ] = useState('')
   const [ kcal, setKcal ] = useState('')
@@ -29,11 +29,13 @@ export default function Calendar() {
       if(a === 'kcal') {
         const kal = array[ b-1 ]
 
-        kal >= 100 && setKcal('aa')
+        kal < 200 && setKcal('aa')
         kal >= 200 && setKcal('bb')
-        kal >= 300 && setKcal('cc')
-        kal >= 400 && setKcal('dd')
-        kal >= 500 && setKcal('ee')
+        kal >= 400 && setKcal('cc')
+        kal >= 600 && setKcal('dd')
+        kal >= 800 && setKcal('ee')
+        kal >= 1000 && setKcal('ff')
+        kal >= 1200 && setKcal('gg')
 
       }
     })
@@ -43,7 +45,7 @@ export default function Calendar() {
         const fiz = array[ b - 1]
         const nao = array[ b - 2 ]
 
-        if(fiz.toLowerCase() === 'fiz') {
+        if(fiz.toLowerCase() === 'fiz' || fiz.toLowerCase() === 'feito' ) {
           if(nao === undefined) {
             setExercise('sim')
           } else if (nao.toLowerCase() === 'nao' || nao.toLowerCase() === 'não') {

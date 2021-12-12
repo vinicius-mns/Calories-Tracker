@@ -7,11 +7,13 @@
 
   transform: translateY(-50%);
   top: 50%;
-  width: 90%;
+  width: 88%;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  z-index: 100;
 }
 
 .header {
@@ -94,23 +96,31 @@ textarea :focus {
 }
 
 .aa {
-  text-shadow: rgb(219, 90, 90) 0px 0px 0px;
+  text-shadow: white 0px 0px 0px;
 }
 
 .bb {
-  text-shadow: rgb(255, 115, 0) 0px 0px 0px;
+  text-shadow: violet 0px 0px 0px;
 }
 
 .cc {
-  text-shadow: rgb(255, 208, 1) 0px 0px 0px;
+  text-shadow: rgba(0, 0, 255, 0.664) 0px 0px 0px;
 }
 
 .dd {
-  text-shadow: rgb(1, 255, 56) 0px 0px 0px;
+  text-shadow: rgba(69, 243, 69, 0.843) 0px 0px 0px;
 }
 
 .ee {
-  text-shadow: rgb(0, 255, 251) 0px 0px 0px;
+  text-shadow: rgb(255, 255, 72) 0px 0px 0px;
+}
+
+.ff {
+  text-shadow: orange 0px 0px 0px;
+}
+
+.gg {
+  text-shadow: red 0px 0px 0px;
 }
 
 .sim::after {
@@ -118,7 +128,7 @@ textarea :focus {
   font-size: 30px; 
   text-align: center;
   animation: spin 10s infinite linear, surgir 0.5s forwards ;
-  color: rgba(255, 255, 255, 0.48);
+  color: rgba(255, 255, 255, 0.445);
   opacity: 0%;
 }
 
@@ -127,7 +137,7 @@ textarea :focus {
   font-size: 30px;
   text-align: center;
   animation: spin 10s infinite linear, surgir 0.5s forwards ;
-  color: rgba(255, 255, 255, 0.48);
+  color: rgba(255, 255, 255, 0.445);
   opacity: 0%;
 }
 

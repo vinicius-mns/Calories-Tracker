@@ -1,0 +1,85 @@
+/* .grid .xy {
+  background-color: transparent;
+  animation: spin 10s infinite linear;
+}
+
+.grid .xx::after {
+  content: "\1F338";
+  font-size: 40px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.445);
+}
+
+.grid .yy::after {
+  content: "\1F4AE";
+  font-size: 40px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.445);
+}
+
+.grid {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.tableContainer {
+  width: 95%;
+}
+
+.subGrid {
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+} */
+
+.containerTable {
+  width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.table {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.table .carousel {
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+}
+
+.carousel .box{
+  display: flex;
+  margin: 10px;
+  justify-content: space-evenly;
+}
+
+.carousel .box div {
+  width: 130px;
+  text-align: center;
+}
+
+.table .xx::after {
+  content: "\1F338";
+  font-size: 40px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.445);
+}
+
+.table .yy::after {
+  content: "\1F4AE";
+  font-size: 40px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.445);
+}
+
+.table .xx, .yy {
+  background-color: transparent;
+  animation: spin 10s infinite linear;
+}
