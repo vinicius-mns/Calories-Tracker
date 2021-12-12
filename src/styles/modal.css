@@ -123,6 +123,10 @@ textarea :focus {
   text-shadow: red 0px 0px 0px;
 }
 
+.ii {
+  text-shadow: rgb(0, 0, 0) 0px 0px 0px;
+}
+
 .sim::after {
   content: "\1F4AE";
   font-size: 30px; 

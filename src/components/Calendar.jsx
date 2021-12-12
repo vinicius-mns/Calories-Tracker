@@ -36,7 +36,7 @@ export default function Calendar() {
         kal >= 800 && setKcal('ee')
         kal >= 1000 && setKcal('ff')
         kal >= 1200 && setKcal('gg')
-
+        kal >= 2500 && setKcal('ii')
       }
     })
     
