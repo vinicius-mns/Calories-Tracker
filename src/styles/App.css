@@ -1,0 +1,29 @@
+* {
+  color: black;
+  background-color: white;
+  max-width: 500px;
+  text-decoration: none;
+  border-radius: 3px;
+}
+
+p {
+  background-color: transparent;
+}
+
+h2 {
+  background-color: transparent;
+}
+
+h1 {
+  background-color: transparent;
+}
+
+button {
+  border: none;
+  width: 90%;
+  height: 60px;
+}
+
+div {
+  background-color: transparent;
+}

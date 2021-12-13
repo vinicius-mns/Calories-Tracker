@@ -1,0 +1,27 @@
+.calendar {
+  background-color: rosybrown;
+  left: 0;
+  right: 0;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.calendar .container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.container button {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  width: 14.28%;
+  height: 40px;
+}

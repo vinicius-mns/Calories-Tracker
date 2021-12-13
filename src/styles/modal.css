@@ -1,0 +1,161 @@
+.modal {
+  background-color: rgb(79, 128, 148);
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+
+  transform: translateY(-50%);
+  top: 50%;
+  width: 96%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  z-index: 100;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.header button {
+  background-color: transparent;
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  margin-top: 10px;
+  margin-left: 80%;
+}
+
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main p {
+  margin-right: 50% ;
+}
+
+textarea {
+  resize: none;
+  width: 70%;
+  border-style: none;
+  outline: none;
+  
+  padding: 10%;
+}
+
+textarea :focus {
+  outline: none;
+}
+
+.final {
+  margin-top: 10px;
+  width: 90%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.box {
+  height: 100px;
+  width: 48.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.final button {
+  height: 46px;
+  width: 100%;
+}
+
+.result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circulo {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  background-color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.aa {
+  text-shadow: white 0px 0px 0px;
+}
+
+.bb {
+  text-shadow: violet 0px 0px 0px;
+}
+
+.cc {
+  text-shadow: rgba(0, 0, 255, 0.664) 0px 0px 0px;
+}
+
+.dd {
+  text-shadow: rgba(69, 243, 69, 0.843) 0px 0px 0px;
+}
+
+.ee {
+  text-shadow: rgb(255, 255, 72) 0px 0px 0px;
+}
+
+.ff {
+  text-shadow: orange 0px 0px 0px;
+}
+
+.gg {
+  text-shadow: red 0px 0px 0px;
+}
+
+.ii {
+  text-shadow: rgb(0, 0, 0) 0px 0px 0px;
+}
+
+.sim::after {
+  content: "\1F4AE";
+  font-size: 30px; 
+  text-align: center;
+  animation: spin 10s infinite linear, surgir 0.5s forwards ;
+  color: rgba(255, 255, 255, 0.445);
+  opacity: 0%;
+}
+
+.nao::after {
+  content: "\1F338";
+  font-size: 30px;
+  text-align: center;
+  animation: spin 10s infinite linear, surgir 0.5s forwards ;
+  color: rgba(255, 255, 255, 0.445);
+  opacity: 0%;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes surgir {
+  to {
+    opacity: 100%;
+    font-size: 75px; 
+  }
+}
+
+/* alternate-reverse infinite */
