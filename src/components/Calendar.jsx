@@ -15,6 +15,7 @@ export default function Calendar() {
   const [ day, setDay ] = useState('')
   const [ kcal, setKcal ] = useState('')
   const [ exercise, setExercise ] = useState('')
+  const [ component, setComponent ] = useState('modal')
 
   function handleClick({target:{id}}) {
     const day = id - 1 
@@ -78,7 +79,7 @@ export default function Calendar() {
 
   function Modal() {
     return(
-      <div className='modal'>
+      <div className={`${component}`}>
         <div className='header'>
           <h2>Dia {day}</h2>
           <button onClick={ closeModal } ><img src={cross} alt='fechar' /></button>
@@ -109,7 +110,11 @@ export default function Calendar() {
   }
 
   function closeModal() {
-    setModal(false)
+    setComponent('desmontar')
+    setTimeout(() => {
+      setModal(false)
+      setComponent('modal')
+    }, 500);
   }
 
   return(
