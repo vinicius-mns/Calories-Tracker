@@ -16,6 +16,11 @@
   z-index: 100;
 }
 
+.modal img {
+  width: 30px;
+  background-color: transparent;
+}
+
 .header {
   display: flex;
   justify-content: center;

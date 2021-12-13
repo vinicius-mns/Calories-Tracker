@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import cross from '../ideal/cross.png'
 import '../styles/calendar.css'
 import '../styles/modal.css';
 
@@ -80,7 +81,7 @@ export default function Calendar() {
       <div className='modal'>
         <div className='header'>
           <h2>Dia {day}</h2>
-          <button>X</button>
+          <button onClick={ closeModal } ><img src={cross} alt='fechar' /></button>
         </div>
 
         <div className='main'>
@@ -105,6 +106,10 @@ export default function Calendar() {
         </div>
       </div>
     )
+  }
+
+  function closeModal() {
+    setModal(false)
   }
 
   return(
