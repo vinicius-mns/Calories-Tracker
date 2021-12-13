@@ -101,8 +101,8 @@ export default function Calendar() {
           </div>
 
           <div className='box'>
-            <button>Confirmar</button>
-            <button>Deletar</button>
+            <button onClick={ closeModal }>Confirmar</button>
+            <button onClick={ closeModal } >Deletar</button>
           </div>
         </div>
       </div>
