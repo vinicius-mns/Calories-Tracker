@@ -25,34 +25,51 @@ export default function Calendar() {
   function handleChange({target:{value}}) {
     const array = value.split(' ')
     
-    array.forEach((a,b) => {
-      if(a === 'kcal') {
-        const kal = array[ b-1 ]
+    // calorias
+    array.forEach((keyWord, index) => {
+      const kcals = [ 'kcal', 'kcals', 'calorias', 'caloria' ]
+      const kcal = () => kcals.includes(keyWord.toLowerCase())
 
-        kal < 200 && setKcal('aa')
-        kal >= 200 && setKcal('bb')
-        kal >= 400 && setKcal('cc')
-        kal >= 600 && setKcal('dd')
-        kal >= 800 && setKcal('ee')
-        kal >= 1000 && setKcal('ff')
-        kal >= 1200 && setKcal('gg')
-        kal >= 2500 && setKcal('ii')
+      if( kcal() ) {
+        const value = array[ index-1 ]
+
+        value < 200 && setKcal('aa')
+        value >= 200 && setKcal('bb')
+        value >= 400 && setKcal('cc')
+        value >= 600 && setKcal('dd')
+        value >= 800 && setKcal('ee')
+        value >= 1000 && setKcal('ff')
+        value >= 1200 && setKcal('gg')
+        value >= 2500 && setKcal('ii')
       }
     })
     
-    array.forEach((a,b) => {
-      if(a === 'exercicio' || a === 'exercício' || a === 'exercicios' || a === 'exercícios' ) {
-        const fiz = array[ b - 1]
-        const nao = array[ b - 2 ]
+    // exercicio
+    array.forEach((keyWord, index) => {
+      const anterior = array[ index - 1] // palavra aterior a 'exercicios'
+      const anterior2x = array[ index - 2 ] // palavra anterio a palavra anterior
+      const anterior3x = array[ index - 3 ]
 
-        if(fiz.toLowerCase() === 'fiz' || fiz.toLowerCase() === 'feito' ) {
-          if(nao === undefined) {
-            setExercise('sim')
-          } else if (nao.toLowerCase() === 'nao' || nao.toLowerCase() === 'não') {
-            setExercise('nao')
-          } else {
-            setExercise('sim')
-          }
+      const exercicios = [ 'exercicio', 'exercício', 'exercicios', 'exercícios' ]
+      const exercitei = [ 'exercitei' ]
+      const exercicio = (parametro) => parametro.includes(keyWord.toLowerCase())
+
+      const fizExercicio = anterior === 'fiz' && exercicio( exercicios )
+      const MeExercitei = anterior === 'me' && exercicio( exercitei )
+
+      if (  fizExercicio || MeExercitei ) {
+        if( anterior2x === undefined ) {
+          setExercise('sim')
+        } else if ( anterior2x === 'não' || anterior2x === 'nao'  ) {
+          setExercise('nao')
+        } else {
+          setExercise('sim')
+        }
+      }
+
+      if( anterior === 'feito' && exercicio( exercicios )) {
+        if( anterior3x === 'não' || anterior3x === 'nao' ) {
+          setExercise('nao')
         }
       }
     })
@@ -72,7 +89,7 @@ export default function Calendar() {
             onChange={ handleChange }
             cols="30"
             rows="10"
-            placeholder='Comi 800kcal e não fiz exercicios' 
+            placeholder='Comi 800 calorias e não fiz exercicios' 
           />
         </div>
 
@@ -106,4 +123,3 @@ export default function Calendar() {
     </div>
   )
 }
- 
