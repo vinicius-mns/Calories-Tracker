@@ -5,11 +5,6 @@
   justify-content: center;
 }
 
-.guideContainer {
-  margin-top: 10px;
-  width: 100%;
-}
-
 .gradientColor {
   flex-direction: column;
   align-items: center;
@@ -50,7 +45,7 @@
 
 .guide .color {
   margin-top: 40px;
-  width: 90%;
+  width: 95%;
   height: 40px;
   background: rgb(255,255,255);
   background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(238,130,238,1) 16%, rgba(20,44,225,1) 32%, rgba(74,200,93,1) 50%, rgba(236,219,79,1) 68%, rgba(250,179,31,1) 86%, rgba(231,21,21,1) 100%);

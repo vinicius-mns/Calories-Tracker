@@ -122,12 +122,12 @@ export default function Calendar() {
       { modal && Modal() }
       <div className='container'>
         {
-          DAYS_OF_WEEk.map((days) => <button>{days}</button>)
+          DAYS_OF_WEEk.map((days) => <button>{ <p>{days}</p> }</button>)
         }
       </div>
       <div className='container days'>
         {
-          days.map((day, index) => <button onClick={ handleClick } id={index} >{day}</button> )
+          days.map((day, index) => <button onClick={ handleClick } id={index} >{ <p>{day}</p>}</button> )
         }
       </div>
     </div>
