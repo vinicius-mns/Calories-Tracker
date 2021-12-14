@@ -1,9 +1,13 @@
 .calendar {
-  background-color: rosybrown;
+  background-color: rgb(252, 227, 227);
   left: 0;
   right: 0;
   width: 95%;
   margin: 0 auto;
+}
+
+.calendar p {
+  color: rgb(104, 73, 73);
 }
 
 .calendar .container {
@@ -13,6 +17,45 @@
 
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.circulo2 {
+  background-color: transparent;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.yes::after {
+  content: "\1F4AE";
+  font-size: 1px;
+  text-align: center;
+  animation: spin2 3s  , surgir2 1s forwards ;
+  color: rgba(255, 255, 255, 0.445);
+  opacity: 0%;
+}
+
+.no::after {
+  content: "\1F338";
+  font-size: 1px;
+  text-align: center;
+  animation: spin2 3s  , surgir2 1s forwards ;
+  color: rgba(255, 255, 255, 0.445);
+  opacity: 0%;
+}
+
+@keyframes surgir2 {
+  to {
+    opacity: 100%;
+    font-size: 30px; 
+  }
+}
+
+@keyframes spin2 {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .container button {

@@ -18,10 +18,36 @@ export default function Calendar() {
   const [ component, setComponent ] = useState('modal')
 
   function handleClick({target:{id}}) {
-    const day = id - 1 
+    const day = id - 1
 
     setDay(day)
     setModal(true)
+  }
+
+  function tratamento() {
+    if( exercise === 'nao' ) {
+      return [ kcal, 'no' ]
+    }
+
+    if( exercise === 'sim' ) {
+      return [ kcal, 'yes' ]
+    }
+
+    if( exercise === '' ) {
+      return [ kcal ]
+    }
+  }
+
+  function save() {
+    const index = day + 1
+
+    if( kcal === '' ) {
+      closeModal()
+    } else {
+      december.splice( index  , 1, tratamento())
+      console.log(december)
+      closeModal()
+    }
   }
 
   function handleChange({target:{value}}) {
@@ -101,7 +127,7 @@ export default function Calendar() {
           </div>
 
           <div className='box'>
-            <button onClick={ closeModal }>Confirmar</button>
+            <button onClick={ save }>Confirmar</button>
             <button onClick={ closeModal } >Deletar</button>
           </div>
         </div>
@@ -114,6 +140,8 @@ export default function Calendar() {
     setTimeout(() => {
       setModal(false)
       setComponent('modal')
+      setExercise('')
+      setKcal('')
     }, 500);
   }
 
@@ -127,7 +155,12 @@ export default function Calendar() {
       </div>
       <div className='container days'>
         {
-          days.map((day, index) => <button onClick={ handleClick } id={index} >{ <p>{day}</p>}</button> )
+          days.map((day, index) => <button onClick={ handleClick } id={index} >
+            {
+              typeof(day) === 'object' ? <span id={index} className={`circulo2 ${day[0]} ${day[1]}`} />
+              : <p id={index}>{day}</p>
+            }
+          </button> )
         }
       </div>
     </div>
