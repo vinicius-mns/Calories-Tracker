@@ -1,5 +1,5 @@
-import React from 'react';
-import { useState } from 'react';
+import React,{ useState, useEffect } from 'react';
+import cross from '../ideal/cross.png'
 import '../styles/calendar.css'
 import '../styles/modal.css';
 
@@ -9,21 +9,52 @@ const december = ['x','x',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,
 const DAYS_OF_WEEk = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom']
 
 export default function Calendar() {
-  const [ days ] = useState(december)
+  const [ days, setDays ] = useState(december)
   const [ modal, setModal ] = useState(false)
   const [ day, setDay ] = useState('')
   const [ kcal, setKcal ] = useState('')
   const [ exercise, setExercise ] = useState('')
+  const [ component, setComponent ] = useState('modal')
+  const [ diaryText, setDiaryText ] = useState('')
+  const [ deletModal, setDeletModal ] = useState(false)
 
   function handleClick({target:{id}}) {
-    const day = id - 1 
+    const day = id - 1
 
     setDay(day)
     setModal(true)
+    diary(day)
+  }
+
+  function tratamento() {
+    if( exercise === 'nao' ) {
+      return [ kcal, 'no', diaryText ]
+    }
+
+    if( exercise === 'sim' ) {
+      return [ kcal, 'yes', diaryText ]
+    }
+
+    if( exercise === '' ) {
+      return [ kcal, 'nao', diaryText ]
+    }
+  }
+
+  function save() {
+    const index = day + 1
+
+    if( kcal === '' ) {
+      closeModal()
+    } else {
+      days.splice( index  , 1, tratamento() ) 
+      localStorage.setItem('december_tracker', JSON.stringify(days)) 
+      closeModal()
+    }
   }
 
   function handleChange({target:{value}}) {
     const array = value.split(' ')
+    setDiaryText(value)
     
     // calorias
     array.forEach((keyWord, index) => {
@@ -75,21 +106,64 @@ export default function Calendar() {
     })
   }
 
+  function diary(day) {
+    const index = day + 1
+    const text = days[index][2]
+
+    if (text !== undefined ) {
+      setTimeout(() => {
+        document.querySelector(`.diary${day}`).innerHTML = text
+      }, 200);
+    }
+  }
+
+  function delet() {
+    setDeletModal(true)
+  }
+
+  function deletYes() {
+    const index = day + 1
+    
+    days.splice( index  , 1, day)  
+    localStorage.setItem('december_tracker', JSON.stringify(days))
+    closeModal()
+    setDeletModal(false)
+  }
+  
+
+  function deletNo() {
+    setDeletModal(false)
+  }
+
+  function DeletModal() {
+    return(
+      <div className='deletModal'>
+        <div><h3>Dia {day}</h3></div>
+        <div><span>Tem certeza que deseja deletar o dia ?</span></div>
+        <div>
+          <button onClick={ deletNo }>Não</button>
+          <button onClick={ deletYes }>Sim</button>
+        </div>
+      </div>
+    )
+  }
+
   function Modal() {
     return(
-      <div className='modal'>
+      <div className={`${component}`}>
         <div className='header'>
           <h2>Dia {day}</h2>
-          <button>X</button>
+          <button onClick={ closeModal } ><img src={cross} alt='fechar' /></button>
         </div>
 
         <div className='main'>
-          <p>Diário</p>
+          <h3>Diário</h3>
           <textarea
             onChange={ handleChange }
             cols="30"
             rows="10"
-            placeholder='Comi 800 calorias e não fiz exercicios' 
+            className={`diary${day}`}
+            placeholder='Comi 800 calorias e não fiz exercicios'
           />
         </div>
 
@@ -99,25 +173,49 @@ export default function Calendar() {
           </div>
 
           <div className='box'>
-            <button>Confirmar</button>
-            <button>Deletar</button>
+            <button onClick={ save }>Confirmar</button>
+            <button onClick={ delet } >Deletar</button>
           </div>
         </div>
       </div>
     )
   }
 
+  function closeModal() {
+    setComponent('desmontar')
+    setTimeout(() => {
+      setModal(false)
+      setComponent('modal')
+      setExercise('')
+      setKcal('')
+    }, 500);
+  }
+
+  useEffect(() => {
+    if( localStorage.getItem('december_tracker') === null ) {
+      localStorage.setItem('december_tracker', JSON.stringify(december))
+    } else {
+      setDays(JSON.parse(localStorage.getItem('december_tracker')))
+    }
+  }, [])
+
   return(
     <div className='calendar'>
+      { deletModal && DeletModal() }
       { modal && Modal() }
       <div className='container'>
         {
-          DAYS_OF_WEEk.map((days) => <button>{days}</button>)
+          DAYS_OF_WEEk.map((days) => <button>{ <p>{days}</p> }</button>)
         }
       </div>
       <div className='container days'>
         {
-          days.map((day, index) => <button onClick={ handleClick } id={index} >{day}</button> )
+          days.map((day, index) => <button onClick={ handleClick } id={index} >
+            {
+              typeof(day) === 'object' ? <span id={index} className={`circulo2 ${day[0]} ${day[1]}`} />
+              : <p id={index}>{day}</p>
+            }
+          </button> )
         }
       </div>
     </div>

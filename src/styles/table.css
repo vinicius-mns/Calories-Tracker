@@ -1,85 +1,52 @@
-/* .grid .xy {
-  background-color: transparent;
-  animation: spin 10s infinite linear;
-}
 
-.grid .xx::after {
-  content: "\1F338";
-  font-size: 40px;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.445);
-}
-
-.grid .yy::after {
-  content: "\1F4AE";
-  font-size: 40px;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.445);
-}
-
-.grid {
-  margin-top: 30px;
+.guide, .guideContainer, .gradientColor {
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
-.tableContainer {
-  width: 95%;
-}
-
-.subGrid {
-  background-color: red;
-  display: flex;
+.gradientColor {
   flex-direction: column;
   align-items: center;
+}
+
+.guide {
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.guide .flowers {
+  width: 100%;
+  display: flex;
   justify-content: center;
-  text-align: center;
-} */
+}
 
-.containerTable {
-  width: 95%;
+.flowers div {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
 }
 
-.table {
-  width: 100%;
-  margin-top: 30px;
-}
-
-.table .carousel {
-  width: 100%;
-  display: flex;
-  overflow-x: auto;
-}
-
-.carousel .box{
-  display: flex;
-  margin: 10px;
-  justify-content: space-evenly;
-}
-
-.carousel .box div {
-  width: 130px;
-  text-align: center;
-}
-
-.table .xx::after {
-  content: "\1F338";
-  font-size: 40px;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.445);
-}
-
-.table .yy::after {
-  content: "\1F4AE";
-  font-size: 40px;
-  text-align: center;
-  color: rgba(255, 255, 255, 0.445);
-}
-
-.table .xx, .yy {
+.flowers span {
+  font-size: 80px;
   background-color: transparent;
-  animation: spin 10s infinite linear;
+  animation: spin 20s infinite linear ;
+}
+
+.guide .values {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  padding: 0;
+  margin: 0;
+}
+
+.guide .color {
+  margin-top: 40px;
+  width: 95%;
+  height: 40px;
+  background: rgb(255,255,255);
+  background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(238,130,238,1) 16%, rgba(20,44,225,1) 32%, rgba(74,200,93,1) 50%, rgba(236,219,79,1) 68%, rgba(250,179,31,1) 86%, rgba(231,21,21,1) 100%);
 }
