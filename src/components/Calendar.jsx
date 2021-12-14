@@ -16,6 +16,7 @@ export default function Calendar() {
   const [ exercise, setExercise ] = useState('')
   const [ component, setComponent ] = useState('modal')
   const [ diaryText, setDiaryText ] = useState('')
+  const [ deletModal, setDeletModal ] = useState(false)
 
   function handleClick({target:{id}}) {
     const day = id - 1
@@ -45,10 +46,8 @@ export default function Calendar() {
     if( kcal === '' ) {
       closeModal()
     } else {
-      days.splice( index  , 1, tratamento())
-      console.log(days)
-      localStorage.setItem('december_tracker', JSON.stringify(days))
-      console.log(days)
+      days.splice( index  , 1, tratamento() ) 
+      localStorage.setItem('december_tracker', JSON.stringify(days)) 
       closeModal()
     }
   }
@@ -118,6 +117,37 @@ export default function Calendar() {
     }
   }
 
+  function delet() {
+    setDeletModal(true)
+  }
+
+  function deletYes() {
+    const index = day + 1
+    
+    days.splice( index  , 1, day)  
+    localStorage.setItem('december_tracker', JSON.stringify(days))
+    closeModal()
+    setDeletModal(false)
+  }
+  
+
+  function deletNo() {
+    setDeletModal(false)
+  }
+
+  function DeletModal() {
+    return(
+      <div className='deletModal'>
+        <div><h3>Dia {day}</h3></div>
+        <div><span>Tem certeza que deseja deletar o dia ?</span></div>
+        <div>
+          <button onClick={ deletNo }>Não</button>
+          <button onClick={ deletYes }>Sim</button>
+        </div>
+      </div>
+    )
+  }
+
   function Modal() {
     return(
       <div className={`${component}`}>
@@ -127,7 +157,7 @@ export default function Calendar() {
         </div>
 
         <div className='main'>
-          <p>Diário</p>
+          <h3>Diário</h3>
           <textarea
             onChange={ handleChange }
             cols="30"
@@ -144,7 +174,7 @@ export default function Calendar() {
 
           <div className='box'>
             <button onClick={ save }>Confirmar</button>
-            <button onClick={ closeModal } >Deletar</button>
+            <button onClick={ delet } >Deletar</button>
           </div>
         </div>
       </div>
@@ -171,6 +201,7 @@ export default function Calendar() {
 
   return(
     <div className='calendar'>
+      { deletModal && DeletModal() }
       { modal && Modal() }
       <div className='container'>
         {
