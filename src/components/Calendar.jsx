@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+import React,{ useState, useEffect } from 'react';
 import cross from '../ideal/cross.png'
 import '../styles/calendar.css'
 import '../styles/modal.css';
@@ -9,7 +9,7 @@ const december = ['x','x',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,
 const DAYS_OF_WEEk = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom']
 
 export default function Calendar() {
-  const [ days ] = useState(december)
+  const [ days, setDays ] = useState(december)
   const [ modal, setModal ] = useState(false)
   const [ day, setDay ] = useState('')
   const [ kcal, setKcal ] = useState('')
@@ -45,7 +45,10 @@ export default function Calendar() {
     if( kcal === '' ) {
       closeModal()
     } else {
-      december.splice( index  , 1, tratamento())
+      days.splice( index  , 1, tratamento())
+      console.log(days)
+      localStorage.setItem('december_tracker', JSON.stringify(days))
+      console.log(days)
       closeModal()
     }
   }
@@ -106,7 +109,7 @@ export default function Calendar() {
 
   function diary(day) {
     const index = day + 1
-    const text = december[index][2]
+    const text = days[index][2]
 
     if (text !== undefined ) {
       setTimeout(() => {
@@ -157,6 +160,14 @@ export default function Calendar() {
       setKcal('')
     }, 500);
   }
+
+  useEffect(() => {
+    if( localStorage.getItem('december_tracker') === null ) {
+      localStorage.setItem('december_tracker', JSON.stringify(december))
+    } else {
+      setDays(JSON.parse(localStorage.getItem('december_tracker')))
+    }
+  }, [])
 
   return(
     <div className='calendar'>
