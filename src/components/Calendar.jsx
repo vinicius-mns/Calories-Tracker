@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React,{ useState } from 'react';
 import cross from '../ideal/cross.png'
 import '../styles/calendar.css'
 import '../styles/modal.css';
@@ -16,25 +15,27 @@ export default function Calendar() {
   const [ kcal, setKcal ] = useState('')
   const [ exercise, setExercise ] = useState('')
   const [ component, setComponent ] = useState('modal')
+  const [ diaryText, setDiaryText ] = useState('')
 
   function handleClick({target:{id}}) {
     const day = id - 1
 
     setDay(day)
     setModal(true)
+    diary(day)
   }
 
   function tratamento() {
     if( exercise === 'nao' ) {
-      return [ kcal, 'no' ]
+      return [ kcal, 'no', diaryText ]
     }
 
     if( exercise === 'sim' ) {
-      return [ kcal, 'yes' ]
+      return [ kcal, 'yes', diaryText ]
     }
 
     if( exercise === '' ) {
-      return [ kcal ]
+      return [ kcal, 'nao', diaryText ]
     }
   }
 
@@ -45,13 +46,13 @@ export default function Calendar() {
       closeModal()
     } else {
       december.splice( index  , 1, tratamento())
-      console.log(december)
       closeModal()
     }
   }
 
   function handleChange({target:{value}}) {
     const array = value.split(' ')
+    setDiaryText(value)
     
     // calorias
     array.forEach((keyWord, index) => {
@@ -103,6 +104,17 @@ export default function Calendar() {
     })
   }
 
+  function diary(day) {
+    const index = day + 1
+    const text = december[index][2]
+
+    if (text !== undefined ) {
+      setTimeout(() => {
+        document.querySelector(`.diary${day}`).innerHTML = text
+      }, 200);
+    }
+  }
+
   function Modal() {
     return(
       <div className={`${component}`}>
@@ -117,7 +129,8 @@ export default function Calendar() {
             onChange={ handleChange }
             cols="30"
             rows="10"
-            placeholder='Comi 800 calorias e não fiz exercicios' 
+            className={`diary${day}`}
+            placeholder='Comi 800 calorias e não fiz exercicios'
           />
         </div>
 
