@@ -15,7 +15,7 @@
 
   z-index: 50;
 
-  opacity: 1%;
+  opacity: 50%;
   animation: nascer 0.5s forwards;
 }
 
@@ -227,7 +227,7 @@ textarea :focus {
 
 @keyframes nascer {
   to {
-    opacity: 99.9%;
+    opacity: 99%;
     top: 50%;
   }
 }
