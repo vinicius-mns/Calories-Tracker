@@ -8,7 +8,7 @@ export default function Home() {
       <div className='card_component'>
         <Link className='link' to='/calendar_tracker'><button>Calorias</button></Link>
         <Link className='link' to='/weight_tracker'><button>Peso</button></Link>
-        <Link className='link' ><button>Help</button></Link>
+        <Link className='link' to='/help'><button>Help</button></Link>
       </div>
     </div>
   );
