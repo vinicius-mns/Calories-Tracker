@@ -14,8 +14,9 @@
   align-items: center;
 
   z-index: 50;
-  visibility: hidden;
-  animation: nascer 1s forwards;
+  animation-name: nascer;
+  animation-fill-mode: forwards;
+  animation-duration: 0.5s;
 }
 
 .desmontar {
@@ -225,8 +226,12 @@ textarea :focus {
 }
 
 @keyframes nascer {
-  to {
-    visibility: visible;
+  0% {
+    top: 60%;
+    opacity: 1%;
+  }
+  100% {
+    opacity: 100%;
     top: 50%;
   }
 }
