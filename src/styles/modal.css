@@ -160,7 +160,6 @@ textarea :focus {
   text-align: center;
   animation: spin 10s infinite linear, surgir 0.5s forwards ;
   color: rgba(255, 255, 255, 0.445);
-  opacity: 0%;
 }
 
 .nao::after {
@@ -169,7 +168,6 @@ textarea :focus {
   text-align: center;
   animation: spin 10s infinite linear, surgir 0.5s forwards ;
   color: rgba(255, 255, 255, 0.445);
-  opacity: 0%;
 }
 
 .deletModal {
@@ -217,7 +215,6 @@ textarea :focus {
 
 @keyframes surgir {
   to {
-    opacity: 100%;
     font-size: 75px; 
   }
 }
