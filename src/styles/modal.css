@@ -14,7 +14,7 @@
   align-items: center;
 
   z-index: 50;
-  opacity: 50%;
+  visibility: hidden;
   animation: nascer 1s forwards;
 }
 
@@ -36,7 +36,7 @@
   z-index: 100;
 
   opacity: 100%;
-  animation: desmontar 0.5s forwards;
+  animation: desmontar 1s forwards;
 }
 
 .modal img, .desmontar img {
@@ -226,7 +226,7 @@ textarea :focus {
 
 @keyframes nascer {
   to {
-    opacity: 100%;
+    visibility: visible;
     top: 50%;
   }
 }
