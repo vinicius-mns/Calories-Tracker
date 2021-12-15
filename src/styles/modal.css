@@ -14,9 +14,9 @@
   align-items: center;
 
   z-index: 50;
-  animation-name: nascer;
-  animation-fill-mode: forwards;
-  animation-duration: 0.5s;
+
+  opacity: 1%;
+  animation: nascer 0.5s forwards;
 }
 
 .desmontar {
@@ -37,7 +37,7 @@
   z-index: 100;
 
   opacity: 100%;
-  animation: desmontar 1s forwards;
+  animation: desmontar 0.5s forwards;
 }
 
 .modal img, .desmontar img {
@@ -226,12 +226,8 @@ textarea :focus {
 }
 
 @keyframes nascer {
-  0% {
-    top: 60%;
-    opacity: 1%;
-  }
-  100% {
-    opacity: 100%;
+  to {
+    opacity: 99.9%;
     top: 50%;
   }
 }
