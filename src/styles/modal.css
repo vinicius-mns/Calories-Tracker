@@ -178,14 +178,52 @@ textarea :focus {
   margin: 0 auto;
 
   transform: translateY(-50%);
-  top: 50%;
+  top: 55%;
   width: 94%;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  animation: deletModalNascer 0.5s forwards;
 }
+
+.deletModalDesmontar {
+  z-index: 110;
+  background-color: rgb(207, 176, 176);
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+
+  transform: translateY(-50%);
+  top: 55%;
+  width: 94%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  animation: deletModalDesmontar 0.5s forwards;
+}
+
+@keyframes deletModalNascer {
+  to {
+    top: 50%;
+  }
+}
+
+@keyframes deletModalDesmontar {
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 50%;
+  }
+}
+
 
 .deletModal button {
   font-weight: 100;
@@ -201,6 +239,25 @@ textarea :focus {
 }
 
 .deletModal div {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.deletModalDesmontar button {
+  font-weight: 100;
+  font-size: 16px;
+  width: 40%;
+  margin-top: 20px;
+  margin-bottom: 13px;
+}
+
+.deletModalDesmontar h3, span {
+  background-color: transparent;
+  color: black;
+}
+
+.deletModalDesmontar div {
   display: flex;
   width: 100%;
   justify-content: space-around;
@@ -225,8 +282,11 @@ textarea :focus {
 }
 
 @keyframes desmontar {
-  to {
-    top:45%;
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 50%;
   }
 }
 

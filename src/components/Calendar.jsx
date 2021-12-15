@@ -17,6 +17,7 @@ export default function Calendar() {
   const [ component, setComponent ] = useState('modal')
   const [ diaryText, setDiaryText ] = useState('')
   const [ deletModal, setDeletModal ] = useState(false)
+  const [ modalDeletClass, setModalDeletClass ] = useState('deletModal')
 
   function handleClick({target:{id}}) {
     const day = id - 1
@@ -127,17 +128,29 @@ export default function Calendar() {
     days.splice( index  , 1, day)  
     localStorage.setItem('december_tracker', JSON.stringify(days))
     closeModal()
-    setDeletModal(false)
+    
+    setModalDeletClass('deletModalDesmontar')
+
+    setTimeout(() => {
+      setDeletModal(false)
+      setModalDeletClass('deletModal')
+
+    }, 400);
   }
   
 
   function deletNo() {
-    setDeletModal(false)
+    setModalDeletClass('deletModalDesmontar')
+
+    setTimeout(() => {
+      setDeletModal(false)
+      setModalDeletClass('deletModal')
+    }, 400);
   }
 
   function DeletModal() {
     return(
-      <div className='deletModal'>
+      <div className={ modalDeletClass }>
         <div><h3>Dia {day}</h3></div>
         <div><span>Tem certeza que deseja deletar o dia ?</span></div>
         <div>
@@ -150,7 +163,7 @@ export default function Calendar() {
 
   function Modal() {
     return(
-      <div className={`${component}`}>
+      <div className={component}>
         <div className='header'>
           <h2>Dia {day}</h2>
           <button onClick={ closeModal } ><img src={cross} alt='fechar' /></button>
