@@ -13,6 +13,8 @@
   flex-direction: column;
   align-items: center;
 
+  z-index: 50;
+  opacity: 50%;
   animation: nascer 1s forwards;
 }
 
@@ -224,6 +226,7 @@ textarea :focus {
 
 @keyframes nascer {
   to {
+    opacity: 100%;
     top: 50%;
   }
 }
