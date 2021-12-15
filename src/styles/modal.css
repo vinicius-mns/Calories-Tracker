@@ -6,7 +6,7 @@
   margin: 0 auto;
 
   transform: translateY(-50%);
-  top: 60%;
+  top: 55%;
   width: 96%;
 
   display: flex;
@@ -15,7 +15,6 @@
 
   z-index: 50;
 
-  opacity: 50%;
   animation: nascer 0.5s forwards;
 }
 
@@ -35,8 +34,6 @@
   align-items: center;
 
   z-index: 100;
-
-  opacity: 100%;
   animation: desmontar 0.5s forwards;
 }
 
@@ -227,15 +224,13 @@ textarea :focus {
 
 @keyframes nascer {
   to {
-    opacity: 99%;
     top: 50%;
   }
 }
 
 @keyframes desmontar {
   to {
-    top:40%;
-    opacity: 0%;
+    top:45%;
   }
 }
 

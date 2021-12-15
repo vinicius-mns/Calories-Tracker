@@ -188,7 +188,7 @@ export default function Calendar() {
       setComponent('modal')
       setExercise('')
       setKcal('')
-    }, 1000);
+    }, 500);
   }
 
   useEffect(() => {
