@@ -1,10 +1,13 @@
 import React,{useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import { setMonth } from '../slice'
+import { useDispatch } from 'react-redux';
 import '../styles/home.css';
 import { months } from '../data/months';
 
 export default function Home() {
-
+  const dispatch = useDispatch()
+  
   useEffect(() => {
     const date = {
       month: new Date().getMonth(),
@@ -22,7 +25,7 @@ export default function Home() {
         break;
     }
 
-    console.log(months[date.year][date.month])
+    dispatch(setMonth(months[date.year][date.month]))
   },[])
 
   return(
