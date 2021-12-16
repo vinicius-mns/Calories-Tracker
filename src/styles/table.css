@@ -1,4 +1,3 @@
-
 .guide, .guideContainer, .gradientColor {
   width: 100%;
   display: flex;
@@ -44,6 +43,7 @@
 }
 
 .guide .color {
+  z-index: 2;
   margin-top: 40px;
   width: 95%;
   height: 40px;

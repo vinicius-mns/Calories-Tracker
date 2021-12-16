@@ -5,8 +5,6 @@ import cross from '../ideal/cross.png'
 import '../styles/calendar.css'
 import '../styles/modal.css';
 
-
-
 export default function Calendar() {
   const history = useHistory()
   const DAYS_OF_WEEk = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom']
@@ -221,7 +219,6 @@ export default function Calendar() {
       setKey(`${path}_tracker_${year2}`)
       setDays(JSON.parse(localStorage.getItem(months[year2][path].storage)))
     }
-
   }, [path])
 
   return(
