@@ -198,7 +198,7 @@ textarea :focus {
   margin: 0 auto;
 
   transform: translateY(-50%);
-  top: 55%;
+  top: 50%;
   width: 94%;
 
   display: flex;
@@ -223,7 +223,6 @@ textarea :focus {
     width: 50%;
   }
 }
-
 
 .deletModal button {
   font-weight: 100;

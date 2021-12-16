@@ -8,7 +8,7 @@ export default function Rotas() {
   return(
     <div>
       <Switch>
-        <Route path="/Calendar_tracker" component={ CalendarTracker }/>
+        <Route path="/Calendar_tracker/:monthPath" component={ CalendarTracker }/>
         <Route path="/Weight_tracker" component={ WeigthTracker }/>
         <Route exact path="/" component={ Home } />
       </Switch>

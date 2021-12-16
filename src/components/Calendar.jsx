@@ -210,6 +210,8 @@ export default function Calendar() {
     } else {
       setDays(JSON.parse(localStorage.getItem('december_tracker')))
     }
+
+    console.log(new Date().getMonth())
   }, [])
 
   return(
