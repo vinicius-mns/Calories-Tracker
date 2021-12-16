@@ -19,9 +19,14 @@ h1 {
 }
 
 button {
+  background-color: white;
   border: none;
   width: 90%;
   height: 60px;
+}
+
+textarea {
+  background-color: white;
 }
 
 div {

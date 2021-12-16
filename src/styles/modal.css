@@ -1,5 +1,5 @@
 .modal {
-  background-color: rgb(79, 128, 148);
+  background-color: rgb(200, 231, 248);
   position: fixed;
   left: 0;
   right: 0;
@@ -19,7 +19,7 @@
 }
 
 .desmontar {
-  background-color: rgb(79, 128, 148);
+  background-color: rgb(200, 231, 248);
   position: fixed;
   left: 0;
   right: 0;
@@ -171,7 +171,7 @@ textarea :focus {
 
 .deletModal {
   z-index: 110;
-  background-color: rgb(207, 176, 176);
+  background-color: rgb(205, 241, 196);
   position: fixed;
   left: 0;
   right: 0;
@@ -191,7 +191,7 @@ textarea :focus {
 
 .deletModalDesmontar {
   z-index: 110;
-  background-color: rgb(207, 176, 176);
+  background-color: rgb(205, 241, 196);
   position: fixed;
   left: 0;
   right: 0;
