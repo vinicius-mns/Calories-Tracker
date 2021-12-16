@@ -219,6 +219,7 @@ export default function Calendar() {
       setKey(`${path}_tracker_${year2}`)
       setDays(JSON.parse(localStorage.getItem(months[year2][path].storage)))
     }
+
   }, [path])
 
   return(
