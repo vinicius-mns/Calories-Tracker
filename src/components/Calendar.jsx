@@ -1,22 +1,26 @@
 import React,{ useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { months } from '../data/months';
 import cross from '../ideal/cross.png'
 import '../styles/calendar.css'
 import '../styles/modal.css';
 
-const december = ['x','x',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,
-  17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,'x','x']
 
-const DAYS_OF_WEEk = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom']
 
 export default function Calendar() {
-  const [ days, setDays ] = useState(december)
+  const history = useHistory()
+  const DAYS_OF_WEEk = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom']
+
+  const [ days, setDays ] = useState([])
   const [ modal, setModal ] = useState(false)
+  const [ path ] = useState(history.location.pathname.split('/')[2])
   const [ day, setDay ] = useState('')
   const [ kcal, setKcal ] = useState('')
   const [ exercise, setExercise ] = useState('')
   const [ component, setComponent ] = useState('modal')
   const [ diaryText, setDiaryText ] = useState('')
   const [ deletModal, setDeletModal ] = useState(false)
+  const [ key, setKey ] = useState('')
   const [ modalDeletClass, setModalDeletClass ] = useState('deletModal')
 
   function handleClick({target:{id}}) {
@@ -48,7 +52,7 @@ export default function Calendar() {
       closeModal()
     } else {
       days.splice( index  , 1, tratamento() ) 
-      localStorage.setItem('december_tracker', JSON.stringify(days)) 
+      localStorage.setItem(key , JSON.stringify(days)) 
       closeModal()
     }
   }
@@ -126,7 +130,7 @@ export default function Calendar() {
     const index = day + 1
     
     days.splice( index  , 1, day)  
-    localStorage.setItem('december_tracker', JSON.stringify(days))
+    localStorage.setItem(key, JSON.stringify(days))
     closeModal()
     
     setModalDeletClass('deletModalDesmontar')
@@ -205,13 +209,19 @@ export default function Calendar() {
   }
 
   useEffect(() => {
-    if( localStorage.getItem('december_tracker') === null ) {
-      localStorage.setItem('december_tracker', JSON.stringify(december))
+    let year2 = 'x'
+    if( new Date().getFullYear() === 2021 ) { year2 = 'xxi' }
+    if( new Date().getFullYear() === 2022 ) { year2 = 'xxii' }
+
+    if( localStorage.getItem(`${path}_tracker_${year2}`) === null ) {
+      localStorage.setItem(months[year2][path].storage, JSON.stringify(months[year2][path].days))
+      setKey(`${path}_tracker_${year2}`)
+      setDays(months[year2][path].days)
     } else {
-      setDays(JSON.parse(localStorage.getItem('december_tracker')))
+      setKey(`${path}_tracker_${year2}`)
+      setDays(JSON.parse(localStorage.getItem(months[year2][path].storage)))
     }
 
-    console.log(new Date().getMonth())
   }, [])
 
   return(
