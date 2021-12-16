@@ -222,7 +222,7 @@ export default function Calendar() {
       setDays(JSON.parse(localStorage.getItem(months[year2][path].storage)))
     }
 
-  }, [])
+  }, [path])
 
   return(
     <div className='calendar'>
