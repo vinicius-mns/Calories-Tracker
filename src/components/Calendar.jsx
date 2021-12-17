@@ -1,6 +1,6 @@
 import React,{ useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { months } from '../data/months';
+import { months as objectMonths } from '../data/months';
 import cross from '../ideal/cross.png'
 import '../styles/calendar.css'
 import '../styles/modal.css';
@@ -9,7 +9,8 @@ export default function Calendar() {
   const history = useHistory()
   const DAYS_OF_WEEk = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom']
 
-  const [ days, setDays ] = useState([])
+  const [ indexDay, setIndexDay ] = useState('')
+  const [ arrayDays, setArrayDays ] = useState([])
   const [ modal, setModal ] = useState(false)
   const [ path ] = useState(history.location.pathname.split('/')[2])
   const [ day, setDay ] = useState('')
@@ -21,12 +22,13 @@ export default function Calendar() {
   const [ key, setKey ] = useState('')
   const [ modalDeletClass, setModalDeletClass ] = useState('deletModal')
 
-  function handleClick({target:{id}}) {
+  function clickOnDay({target:{id}}) {
     const day = id - 1
 
     setDay(day)
+    setIndexDay(id)
     setModal(true)
-    diary(day)
+    diary(id)
   }
 
   function tratamento() {
@@ -44,13 +46,11 @@ export default function Calendar() {
   }
 
   function save() {
-    const index = day + 1
-
     if( kcal === '' ) {
       closeModal()
     } else {
-      days.splice( index  , 1, tratamento() ) 
-      localStorage.setItem(key , JSON.stringify(days)) 
+      arrayDays.splice( indexDay  , 1, tratamento() ) 
+      localStorage.setItem(key , JSON.stringify(arrayDays)) 
       closeModal()
     }
   }
@@ -109,13 +109,12 @@ export default function Calendar() {
     })
   }
 
-  function diary(day) {
-    const index = day + 1
-    const text = days[index][2]
+  function diary(index) {
+    const text = arrayDays[index][2]
 
     if (text !== undefined ) {
       setTimeout(() => {
-        document.querySelector(`.diary${day}`).innerHTML = text
+        document.querySelector(`.diary${index - 1}`).innerHTML = text
       }, 200);
     }
   }
@@ -124,13 +123,11 @@ export default function Calendar() {
     setDeletModal(true)
   }
 
-  function deletYes() {
-    const index = day + 1
-    
-    days.splice( index  , 1, day)  
-    localStorage.setItem(key, JSON.stringify(days))
+  function deletYes() {  
+    arrayDays.splice( indexDay  , 1, day)  
+    localStorage.setItem(key, JSON.stringify(arrayDays))
+
     closeModal()
-    
     setModalDeletClass('deletModalDesmontar')
 
     setTimeout(() => {
@@ -207,17 +204,17 @@ export default function Calendar() {
   }
 
   useEffect(() => {
-    let year2 = 'x'
-    if( new Date().getFullYear() === 2021 ) { year2 = 'xxi' }
-    if( new Date().getFullYear() === 2022 ) { year2 = 'xxii' }
+    let year = 'x'
+    if( new Date().getFullYear() === 2021 ) { year = 'xxi' }
+    if( new Date().getFullYear() === 2022 ) { year = 'xxii' }
 
-    if( localStorage.getItem(`${path}_tracker_${year2}`) === null ) {
-      localStorage.setItem(months[year2][path].storage, JSON.stringify(months[year2][path].days))
-      setKey(`${path}_tracker_${year2}`)
-      setDays(months[year2][path].days)
+    if( localStorage.getItem(`${path}_tracker_${year}`) === null ) {
+      localStorage.setItem(objectMonths[year][path].storage, JSON.stringify(objectMonths[year][path].days))
+      setKey(`${path}_tracker_${year}`)
+      setArrayDays(objectMonths[year][path].days)
     } else {
-      setKey(`${path}_tracker_${year2}`)
-      setDays(JSON.parse(localStorage.getItem(months[year2][path].storage)))
+      setKey(`${path}_tracker_${year}`)
+      setArrayDays(JSON.parse(localStorage.getItem(objectMonths[year][path].storage)))
     }
 
   }, [path])
@@ -233,7 +230,7 @@ export default function Calendar() {
       </div>
       <div className='container days'>
         {
-          days.map((day, index) => <button onClick={ handleClick } id={index} >
+          arrayDays.map((day, index) => <button onClick={ clickOnDay } id={index} >
             {
               typeof(day) === 'object' ? <span id={index} className={`circulo2 ${day[0]} ${day[1]}`} />
               : <p id={index}>{day}</p>
