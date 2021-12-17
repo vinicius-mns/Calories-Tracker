@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { months as objectMonths } from '../data/months';
 import '../styles/calendar.css'
 import '../styles/modal.css';
+import DeletModal from './DeletModal';
 import Modal from './Modal';
 
 export default function Calendar() {
@@ -147,19 +148,6 @@ export default function Calendar() {
     }, 400);
   }
 
-  function DeletModal() {
-    return(
-      <div className={ modalDeletClass }>
-        <div><h3>Dia {day}</h3></div>
-        <div><span>Tem certeza que deseja deletar o dia ?</span></div>
-        <div>
-          <button onClick={ deletNo }>Não</button>
-          <button onClick={ deletYes }>Sim</button>
-        </div>
-      </div>
-    )
-  }
-
   function closeModal() {
     setComponent('desmontar')
     setTimeout(() => {
@@ -188,8 +176,14 @@ export default function Calendar() {
 
   return(
     <div className='calendar'>
-      { deletModal && DeletModal() }
-      { modal && <Modal component={ component } 
+      { deletModal && 
+        <DeletModal modalDeletClass={ modalDeletClass }
+        day={ day }
+        deletNo={ deletNo } 
+        deletYes={ deletYes } /> 
+      }
+      { modal && 
+        <Modal component={ component } 
         closeModal={ closeModal }
         handleChange={ handleChange }
         day={ day }
