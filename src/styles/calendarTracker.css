@@ -11,6 +11,15 @@
   align-items: center;
 }
 
+.calendarTracker button {
+  width: 130px;
+  align-self: flex-start;
+}
+
+.monthButton {
+  background-color: transparent;
+}
+
 .calendarTracker h2 {
   align-self: flex-start;
   margin-left: 30px;

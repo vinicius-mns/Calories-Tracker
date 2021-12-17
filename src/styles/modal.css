@@ -290,12 +290,17 @@ textarea :focus {
 }
 
 .modalMonths {
-  background-color: rgb(212, 146, 146);
+  background-color: rgb(219, 245, 234);
   position: fixed;
   width: 90%;
   display: flex;
   flex-direction: column;
   text-align: center;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .containerMonth {
@@ -303,15 +308,14 @@ textarea :focus {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
   text-align: center;
 }
-
-.cardMonth {
-  background-color: white;
-  width: 45%;
+.containerMonth button {
+  background-color: rgba(255, 255, 255, 0.452);
   margin-top: 5px;
   margin-bottom: 5px;
+  width: 45%;
 }
 
 .titleModalMonth {

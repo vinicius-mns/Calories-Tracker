@@ -170,7 +170,7 @@ export default function Calendar({monthModal, closeMonthModal}) {
         <div className='containerMonth'>
           {
             arrayMonths.map(({nome, ano}) => 
-              <div className='cardMonth' ><h3>{`${nome} ${ano}`}</h3></div> )
+              <button ><h3>{`${nome} ${ano}`}</h3></button> )
           }
         </div>
       </div>
