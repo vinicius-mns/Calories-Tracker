@@ -1,12 +1,14 @@
 import React,{ useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { months as objectMonths } from '../data/months';
+import { arrayMonths } from '../data/months';
+import cross from '../ideal/cross.png'
 import '../styles/calendar.css'
 import '../styles/modal.css';
 import DeletModal from './DeletModal';
 import Modal from './Modal';
 
-export default function Calendar() {
+export default function Calendar({monthModal, closeMonthModal}) {
   const history = useHistory()
   const DAYS_OF_WEEk = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom']
 
@@ -158,6 +160,23 @@ export default function Calendar() {
     }, 400);
   }
 
+  function ModalMonths() {
+    return(
+      <div className='modalMonths'>
+        <div className='titleModalMonth'>
+          <h2>Escolha o mês que deseja</h2>
+          <button onClick={ closeMonthModal }><img src={cross} alt="fechar" /></button>
+        </div>
+        <div className='containerMonth'>
+          {
+            arrayMonths.map(({nome, ano}) => 
+              <div className='cardMonth' ><h3>{`${nome} ${ano}`}</h3></div> )
+          }
+        </div>
+      </div>
+    )
+  }
+
   useEffect(() => {
     let year = 'x'
     if( new Date().getFullYear() === 2021 ) { year = 'xxi' }
@@ -176,6 +195,7 @@ export default function Calendar() {
 
   return(
     <div className='calendar'>
+      {monthModal && ModalMonths()}
       { deletModal && 
         <DeletModal modalDeletClass={ modalDeletClass }
         day={ day }

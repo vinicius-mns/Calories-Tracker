@@ -39,3 +39,19 @@ export const months = {
     }
   }
 }
+
+export const arrayMonths = [ 
+  { nome: 'Janeiro', ano: 2022 },
+  { nome: 'Fevereiro', ano: 2022 },
+  { nome: 'Março', ano: 2022 },
+  { nome: 'Abriu', ano: 2022 },
+  { nome: 'Maio', ano: 2022 },
+  { nome: 'Junho', ano: 2022 },
+  { nome: 'Julho', ano: 2022 },
+  { nome: 'Agosto', ano: 2022 },
+  { nome: 'Setembro', ano: 2022 },
+  { nome: 'Outubro', ano: 2022 },
+  { nome: 'Novembro', ano: 2022 },
+  { nome: 'Dezembro', ano: 2022 },
+  { nome: 'Dezembro', ano: 2021 },
+ ]

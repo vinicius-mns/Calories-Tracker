@@ -289,4 +289,47 @@ textarea :focus {
   }
 }
 
+.modalMonths {
+  background-color: rgb(212, 146, 146);
+  position: fixed;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.containerMonth {
+  background-color: transparent;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.cardMonth {
+  background-color: white;
+  width: 45%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.titleModalMonth {
+  background-color: transparent;
+  display: flex;
+  justify-content: space-around;
+}
+
+.titleModalMonth img {
+  background-color: transparent;
+  width: 30px;
+}
+
+.titleModalMonth button{
+  margin-top: 14px;
+  width: 35px;
+  height: 30px;
+  background-color: transparent;
+}
+
 /* alternate-reverse infinite */
