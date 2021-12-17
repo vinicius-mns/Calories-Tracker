@@ -1,9 +1,9 @@
 import React,{ useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { months as objectMonths } from '../data/months';
-import cross from '../ideal/cross.png'
 import '../styles/calendar.css'
 import '../styles/modal.css';
+import Modal from './Modal';
 
 export default function Calendar() {
   const history = useHistory()
@@ -160,39 +160,6 @@ export default function Calendar() {
     )
   }
 
-  function Modal() {
-    return(
-      <div className={component}>
-        <div className='header'>
-          <h2>Dia {day}</h2>
-          <button onClick={ closeModal } ><img src={cross} alt='fechar' /></button>
-        </div>
-
-        <div className='main'>
-          <h3>Diário</h3>
-          <textarea
-            onChange={ handleChange }
-            cols="30"
-            rows="10"
-            className={`diary${day}`}
-            placeholder='Comi 800 calorias e não fiz exercicios'
-          />
-        </div>
-
-        <div className='final' >
-          <div className='result box'>
-            <div className={`circulo ${exercise} ${kcal}`}/>
-          </div>
-
-          <div className='box'>
-            <button onClick={ save }>Confirmar</button>
-            <button onClick={ delet } >Deletar</button>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
   function closeModal() {
     setComponent('desmontar')
     setTimeout(() => {
@@ -222,7 +189,15 @@ export default function Calendar() {
   return(
     <div className='calendar'>
       { deletModal && DeletModal() }
-      { modal && Modal() }
+      { modal && <Modal component={ component } 
+        closeModal={ closeModal }
+        handleChange={ handleChange }
+        day={ day }
+        exercise={ exercise }
+        kcal={ kcal }
+        save={ save }
+        delet={ delet }
+      /> }
       <div className='container'>
         {
           DAYS_OF_WEEk.map((days) => <button>{ <p>{days}</p> }</button>)
