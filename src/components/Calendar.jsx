@@ -11,7 +11,6 @@ export default function Calendar({ monthModal, closeMonthModal }) {
   const history = useHistory()
   const DAYS_OF_WEEk = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom']
 
-  const [indexDay, setIndexDay] = useState('')
   const [arrayDays, setArrayDays] = useState([])
   const [modal, setModal] = useState(false)
   const [path, setPath] = useState(history.location.pathname.split('/')[2])
@@ -22,16 +21,19 @@ export default function Calendar({ monthModal, closeMonthModal }) {
   const [diaryText, setDiaryText] = useState('')
   const [deletModal, setDeletModal] = useState(false)
   const [key, setKey] = useState('')
+  const [keyDay, setKeyDay] = useState('')
   const [modalDeletClass, setModalDeletClass] = useState('deletModal')
 
   function clickOnDay({ target }) {
     const { id } = target
-    console.log(target)
+    const day = Number(target.innerHTML)
+    const keyDay = (arrayDays.findIndex((index) =>  index === day))
+
     if(id !== ' ') {
-      setDay(id)
-      setIndexDay(id)
+      setDay(day)
       setModal(true)
       diary(id)
+      setKeyDay(keyDay)
     }
   }
 
@@ -53,7 +55,8 @@ export default function Calendar({ monthModal, closeMonthModal }) {
     if (kcal === '') {
       closeModal()
     } else {
-      arrayDays.splice(indexDay, 1, tratamento())
+
+      arrayDays.splice(keyDay, 1, tratamento())
       localStorage.setItem(key, JSON.stringify(arrayDays))
       closeModal()
     }
@@ -128,7 +131,7 @@ export default function Calendar({ monthModal, closeMonthModal }) {
   }
 
   function deletYes() {
-    arrayDays.splice(indexDay, 1, day)
+    arrayDays.splice(keyDay, 1, day)
     localStorage.setItem(key, JSON.stringify(arrayDays))
 
     closeModal()
