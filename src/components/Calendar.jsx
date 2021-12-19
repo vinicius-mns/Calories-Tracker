@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { months as objectMonths } from '../data/months';
-import { arrayMonths } from '../data/months';
-import cross from '../ideal/cross.png'
 import '../styles/calendar.css'
 import '../styles/modal.css';
 import DeletModal from './DeletModal';
 import Modal from './Modal';
+import ModalMonths from './ModalMonths';
 
 export default function Calendar({ monthModal, closeMonthModal }) {
   const history = useHistory()
@@ -160,27 +159,7 @@ export default function Calendar({ monthModal, closeMonthModal }) {
     }, 400);
   }
 
-  function ModalMonths() {
-    return (
-      <div className='modalMonths'>
-        <div className='titleModalMonth'>
-          <h2>Escolha o mês que deseja</h2>
-          <button onClick={closeMonthModal}><img src={cross} alt="fechar" /></button>
-        </div>
-        <div className='containerMonth'>
-          {
-            arrayMonths.map(({ nome, ano }) =>
-              <button onClick={click} id={`${nome} ${ano}`} >
-                <h3 id={`${nome} ${ano}`} >{`${nome} ${ano}`}</h3>
-              </button>
-            )
-          }
-        </div>
-      </div>
-    )
-  }
-
-  function click({ target: { id } }) {
+  function setNewMonth({ target: { id } }) {
     const array = id.split(' ')
     console.log(array)
     history.push(`/calendar_tracker/${array[0]}`)
@@ -202,7 +181,7 @@ export default function Calendar({ monthModal, closeMonthModal }) {
 
   return (
     <div className='calendar'>
-      {monthModal && ModalMonths()}
+      {monthModal && <ModalMonths closeMonthModal={ closeMonthModal } setNewMonth={ setNewMonth } />}
       {deletModal &&
         <DeletModal modalDeletClass={modalDeletClass}
           day={day}
