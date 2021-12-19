@@ -1,5 +1,5 @@
 import React,{ useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { months as objectMonths } from '../data/months';
 import { arrayMonths } from '../data/months';
 import cross from '../ideal/cross.png'
@@ -170,11 +170,33 @@ export default function Calendar({monthModal, closeMonthModal}) {
         <div className='containerMonth'>
           {
             arrayMonths.map(({nome, ano}) => 
-              <button ><h3>{`${nome} ${ano}`}</h3></button> )
+              <button onClick={click} id={`${nome} ${ano}`} >
+                <h3 id={`${nome} ${ano}`} >{`${nome} ${ano}`}</h3>
+              </button>
+            )
           }
         </div>
       </div>
     )
+  }
+
+  function click({target:{ id }}) {
+    const array = id.split(' ')
+    console.log(array)
+    history.push(`/calendar_tracker/${array[0]}`)
+
+    let year = 'x'
+    if( array[1] === 2021 ) { year = 'xxi' }
+    if( array[1] === 2022 ) { year = 'xxii' }
+
+    if( localStorage.getItem(`${path}_tracker_${year}`) === null ) {
+      localStorage.setItem(objectMonths[year][path].storage, JSON.stringify(objectMonths[year][path].days))
+      setKey(`${path}_tracker_${year}`)
+      setArrayDays(objectMonths[year][path].days)
+    } else {
+      setKey(`${path}_tracker_${year}`)
+      setArrayDays(JSON.parse(localStorage.getItem(objectMonths[year][path].storage)))
+    }
   }
 
   useEffect(() => {
