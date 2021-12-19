@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { months as objectMonths } from '../data/months';
@@ -24,30 +25,35 @@ export default function Calendar({ monthModal, closeMonthModal }) {
   const [keyDay, setKeyDay] = useState('')
   const [modalDeletClass, setModalDeletClass] = useState('deletModal')
 
-  function clickOnDay({ target }) {
-    const { id } = target
-    const day = Number(target.innerHTML)
-    const keyDay = (arrayDays.findIndex((index) =>  index === day))
+  function clickOnDay({ target: { id } }) {
+    if( id.length > 5 ) {
+      const keyDay = arrayDays.findIndex((a) => a == id)
 
-    if(id !== ' ') {
-      setDay(day)
+      setDay(Number(id.split(',')[3]))
       setModal(true)
-      diary(id)
+      diary(keyDay)
       setKeyDay(keyDay)
-    }
+    } else if( id !== ' ' ) {
+      const keyDay = arrayDays.findIndex((index) =>  index === Number(id))
+
+      setDay(id)
+      setModal(true)
+      diary(keyDay)
+      setKeyDay(keyDay)
+    } 
   }
 
   function tratamento() {
     if (exercise === 'nao') {
-      return [kcal, 'no', diaryText]
+      return [kcal, 'no', diaryText, day]
     }
 
     if (exercise === 'sim') {
-      return [kcal, 'yes', diaryText]
+      return [kcal, 'yes', diaryText, day]
     }
 
     if (exercise === '') {
-      return [kcal, 'nao', diaryText]
+      return [kcal, 'no', diaryText, day]
     }
   }
 
@@ -55,7 +61,8 @@ export default function Calendar({ monthModal, closeMonthModal }) {
     if (kcal === '') {
       closeModal()
     } else {
-
+      const keyDay = arrayDays.findIndex((index) =>  index === Number(day))
+      console.log(keyDay)
       arrayDays.splice(keyDay, 1, tratamento())
       localStorage.setItem(key, JSON.stringify(arrayDays))
       closeModal()
@@ -116,12 +123,13 @@ export default function Calendar({ monthModal, closeMonthModal }) {
     })
   }
 
-  function diary(index) {
-    const text = arrayDays[index][2]
+  function diary(day) {
+    const text = arrayDays[day][2]
+    console.log(text)
 
     if (text !== undefined) {
       setTimeout(() => {
-        document.querySelector(`.diary${index - 1}`).innerHTML = text
+        document.querySelector(`.diary${day}`).innerHTML = text
       }, 200);
     }
   }
@@ -166,7 +174,6 @@ export default function Calendar({ monthModal, closeMonthModal }) {
 
   function setNewMonth({ target: { id } }) {
     const array = id.split(' ')
-    console.log(array)
     history.push(`/calendar_tracker/${array[0]}`)
     setPath(history.location.pathname.split('/')[2])
     closeMonthModal()
@@ -197,7 +204,7 @@ export default function Calendar({ monthModal, closeMonthModal }) {
         <Modal component={component}
           closeModal={closeModal}
           handleChange={handleChange}
-          day={day}
+          day={keyDay}
           exercise={exercise}
           kcal={kcal}
           save={save}
