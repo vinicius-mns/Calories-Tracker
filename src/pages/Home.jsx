@@ -8,22 +8,24 @@ export default function Home() {
   
   useEffect(() => {
     const date = {
-      month: new Date().getMonth(),
-      year: new Date().getFullYear(),
+      month: new Date().getMonth()
     }
     
-    switch (date.year) {
-      case 2021:
-        date.year = 'xxi'
+     switch (date.month) {
+      case 11:
+        date.month = 'Dezembro'
+         break;
+      case 0:
+        date.month = 'Janeiro'
         break;
-      case 2022:
-        date.year = 'xxii'
-        break
-      default:
+      case 1:
+        date.month = 'Favereiro'
         break;
-    }
+       default:
+         break;
+     }
 
-    setMonth(months[date.year][date.month])
+    setMonth(months[date.month])
 
   },[])
 
