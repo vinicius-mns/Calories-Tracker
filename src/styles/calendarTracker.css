@@ -18,15 +18,14 @@
 
 .monthButton {
   background-color: transparent;
-}
-
-.calendarTracker h2 {
-  align-self: flex-start;
-  margin-left: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 22px;
 }
 
 .calendarTracker button h2 {
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .arvore {
