@@ -24,10 +24,10 @@ export default function Calendar({ monthModal, closeMonthModal }) {
   const [key, setKey] = useState('')
   const [modalDeletClass, setModalDeletClass] = useState('deletModal')
 
-  function clickOnDay({ target: { id } }) {
-    if(id === ' ') {
-
-    } else {
+  function clickOnDay({ target }) {
+    const { id } = target
+    console.log(target)
+    if(id !== ' ') {
       setDay(id)
       setIndexDay(id)
       setModal(true)
@@ -207,7 +207,7 @@ export default function Calendar({ monthModal, closeMonthModal }) {
       </div>
       <div className='container days'>
         {
-          arrayDays.map((day) => <button onClick={clickOnDay} id={day} >
+          arrayDays.map((day) => <button onClick={clickOnDay} >
             {
               typeof (day) === 'object' ? <span id={day} className={`circulo2 ${day[0]} ${day[1]}`} />
                 : <p id={day}>{day}</p>
