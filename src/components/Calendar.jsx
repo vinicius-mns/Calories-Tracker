@@ -1,7 +1,8 @@
 /* eslint-disable eqeqeq */
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { months as objectMonths } from '../data/months';
+// import { months as objectMonths } from '../data/months';
+import handleMonth from '../data/months';
 import '../styles/calendar.css'
 import '../styles/modal.css';
 import DeletModal from './DeletModal';
@@ -180,13 +181,18 @@ export default function Calendar({ monthModal, closeMonthModal }) {
   }
 
   useEffect(() => {
-    if (localStorage.getItem(objectMonths[path].storage) === null) {
-      localStorage.setItem(objectMonths[path].storage, JSON.stringify(objectMonths[path].days))
-      setKey(objectMonths[path].storage)
-      setArrayDays(objectMonths[path].days)
+    const ano = new Date().getFullYear()
+    const obj = handleMonth(ano, path)
+    const keyStorage = obj.result.storage
+    const days = obj.result.days
+
+    if (localStorage.getItem(keyStorage) === null) {
+      localStorage.setItem(keyStorage, JSON.stringify(days))
+      setKey(keyStorage)
+      setArrayDays(days)
     } else {
-      setKey(objectMonths[path].storage)
-      setArrayDays(JSON.parse(localStorage.getItem(objectMonths[path].storage)))
+      setKey(keyStorage)
+      setArrayDays(JSON.parse(localStorage.getItem(keyStorage)))
     }
 
   }, [path])
