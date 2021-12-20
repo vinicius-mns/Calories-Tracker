@@ -30,3 +30,20 @@ const months = {
     },
   }
 }
+
+export default function getMonth(ano, mes) {
+  if( typeof(mes) === 'number' ) {
+    switch (mes) {
+      case 0:
+        mes = 'Janeiro'
+        break;
+      case 1:
+        mes = 'Fevereiro'
+        break
+      default:
+        break;
+    }
+    return { year: ano, month: mes, result: months[ano][mes] }
+ }
+return { year: ano, month: mes, result: months[ano][mes] }
+}
