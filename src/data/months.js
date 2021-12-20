@@ -31,7 +31,7 @@ const months = {
   }
 }
 
-export default function getMonth(ano, mes) {
+export default function handleMonth(ano, mes) {
   if( typeof(mes) === 'number' ) {
     switch (mes) {
       case 0:
@@ -39,6 +39,9 @@ export default function getMonth(ano, mes) {
         break;
       case 1:
         mes = 'Fevereiro'
+        break
+      case 11:
+        mes = 'Dezembro'
         break
       default:
         break;
