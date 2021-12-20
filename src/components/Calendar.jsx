@@ -1,7 +1,6 @@
 /* eslint-disable eqeqeq */
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-// import { months as objectMonths } from '../data/months';
 import handleMonth from '../data/months';
 import '../styles/calendar.css'
 import '../styles/modal.css';
@@ -210,7 +209,7 @@ export default function Calendar({ monthModal, closeMonthModal }) {
         <Modal component={component}
           closeModal={closeModal}
           handleChange={handleChange}
-          day={keyDay}
+          day={day}
           exercise={exercise}
           kcal={kcal}
           save={save}
