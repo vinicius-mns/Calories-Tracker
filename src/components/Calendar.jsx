@@ -31,14 +31,13 @@ export default function Calendar({ monthModal, closeMonthModal }) {
 
       setDay(Number(id.split(',')[3]))
       setModal(true)
-      diary(id.split(',')[3])
+      diary(keyDay, id.split(',')[3])
       setKeyDay(keyDay)
     } else if( id !== ' ' ) {
       const keyDay = arrayDays.findIndex((index) =>  index === Number(id))
-
       setDay(id)
       setModal(true)
-      diary(id)
+      diary(keyDay, id)
       setKeyDay(keyDay)
     } 
   }
@@ -61,7 +60,7 @@ export default function Calendar({ monthModal, closeMonthModal }) {
     if (kcal === '') {
       closeModal()
     } else {
-      arrayDays.splice(day, 1, tratamento())
+      arrayDays.splice(keyDay, 1, tratamento())
       localStorage.setItem(key, JSON.stringify(arrayDays))
       closeModal()
     }
@@ -121,8 +120,8 @@ export default function Calendar({ monthModal, closeMonthModal }) {
     })
   }
 
-  function diary(day) {
-    const text = arrayDays[day][2]
+  function diary(indexDay, day) {
+    const text = arrayDays[indexDay][2]
 
     if (text !== undefined) {
       setTimeout(() => {
