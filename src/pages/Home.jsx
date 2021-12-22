@@ -11,7 +11,6 @@ export default function Home() {
     const mes = new Date().getMonth()
 
     setMonth(handleMonth(year, mes).month)
-    console.log(year)
   },[year])
 
   return(
