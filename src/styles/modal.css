@@ -303,7 +303,7 @@ textarea :focus {
 }
 
 .modalMonths {
-  background-color: rgb(219, 245, 234);
+  background-color: #aadcf7;
   position: fixed;
   width: 97%;
   display: flex;
@@ -319,6 +319,10 @@ textarea :focus {
   overflow-y: auto;
 }
 
+.modalMonths h2, h3, p, span {
+  color: #5a373d;
+}
+
 .containerMonth {
   display: flex;
   flex-direction: column;
@@ -331,11 +335,12 @@ textarea :focus {
 
 .containerMonth .clearAll {
   align-self: center;
-  background-color: rgb(221, 162, 162);
+  background-color: rgb(253, 67, 67);
   width: 90%;
 }
 
 .containerMonth .clearAll p {
+  color: white;
   font-size: 18px;
   font-weight: 100;
 }
@@ -376,16 +381,16 @@ textarea :focus {
 }
 
 .modalClearAll {
-  background-color: red;
-  position: fixed;
+  background-color: red;;
+  position: absolute;
   left: 0;
   right: 0;
   margin: 0 auto;
-  bottom: 20px;
   width: 96%;
-  
   display: flex;
   flex-direction: column;
+  transform: translateY(-50%);
+  top: 80%;
 }
 
 .modalClearAllText{
