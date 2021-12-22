@@ -14,7 +14,7 @@ export default function Calendar({ monthModal, closeMonthModal }) {
 
   const [arrayDays, setArrayDays] = useState([])
   const [modal, setModal] = useState(false)
-  const [path, setPath] = useState(history.location.pathname.split('/')[2])
+  const [month, setMonth] = useState(history.location.pathname.split('/')[2])
   const [day, setDay] = useState('')
   const [kcal, setKcal] = useState('')
   const [exercise, setExercise] = useState('')
@@ -24,7 +24,7 @@ export default function Calendar({ monthModal, closeMonthModal }) {
   const [key, setKey] = useState('')
   const [keyDay, setKeyDay] = useState('')
   const [modalDeletClass, setModalDeletClass] = useState('deletModal')
-  const [year, setYear] = useState(new Date().getFullYear())
+  const [year, setYear] = useState(history.location.pathname.split('/')[3])
 
   function clickOnDay({ target: { id } }) {
     if( id.length > 5 ) {
@@ -173,14 +173,14 @@ export default function Calendar({ monthModal, closeMonthModal }) {
     const array = id.split(' ')
     const mes = array[0]
     const ano = array[1]
-    history.push(`/calendar_tracker/${mes}`)
-    setPath(history.location.pathname.split('/')[2])
-    setYear(ano)
+    history.push(`/calendar_tracker/${mes}/${ano}`)
+    setMonth(history.location.pathname.split('/')[2])
+    setYear(history.location.pathname.split('/')[3])
     closeMonthModal()
   }
 
   useEffect(() => {
-    const obj = handleMonth(year, path)
+    const obj = handleMonth(year, month)
     const keyStorage = obj.result.storage
     const days = obj.result.days
 
@@ -193,7 +193,7 @@ export default function Calendar({ monthModal, closeMonthModal }) {
       setArrayDays(JSON.parse(localStorage.getItem(keyStorage)))
     }
 
-  }, [path])
+  }, [month, year])
 
   return (
     <div className='calendar'>
