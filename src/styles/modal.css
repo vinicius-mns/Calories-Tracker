@@ -1,5 +1,5 @@
 .modal {
-  background-color: rgb(200, 231, 248);
+  background-color: #ffdce5;
   position: fixed;
   left: 0;
   right: 0;
@@ -18,8 +18,20 @@
   animation: nascer 0.5s forwards;
 }
 
+.modal h2, h3 {
+  color: #5a373d;
+}
+
+.desmontar h2, h3 {
+  color: #5a373d;
+}
+
+::placeholder {
+  color: #5a373d3f;
+}
+
 .desmontar {
-  background-color: rgb(200, 231, 248);
+  background-color: #ffdce5;
   position: fixed;
   left: 0;
   right: 0;
