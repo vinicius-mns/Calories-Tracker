@@ -16,9 +16,9 @@ export default function Home() {
   return(
     <div>
       <div className='card_component'>
-        <Link className='link' to={`/calendar_tracker/${ month }/${ year }`}><button>Calorias</button></Link>
-        <Link className='link' to='/weight_tracker'><button>Peso</button></Link>
-        <Link className='link' to='/'><button>Help</button></Link>
+        <Link className='link' to={`/calendar_tracker/${ month }/${ year }`}><button><h2>Calorias</h2></button></Link>
+        <Link className='link' to='/weight_tracker'><button><h2>Peso</h2></button></Link>
+        <Link className='link' to='/'><button><h2>Help</h2></button></Link>
       </div>
     </div>
   );

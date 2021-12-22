@@ -1,14 +1,10 @@
 .calendar {
-  background-color: rgba(255, 255, 255, 0.445);
+  background-color: #ffdee777;
   left: 0;
   right: 0;
   width: 95%;
   margin: 0 auto;
   z-index: 4;
-}
-
-.calendar p {
-  color: rgb(104, 73, 73);
 }
 
 .calendar .container {
@@ -33,7 +29,6 @@
   font-size: 1px;
   text-align: center;
   animation: spin2 3s  , surgir2 1s forwards ;
-  color: rgba(255, 255, 255, 0.445);
 }
 
 .no::after {
@@ -41,7 +36,6 @@
   font-size: 1px;
   text-align: center;
   animation: spin2 3s  , surgir2 1s forwards ;
-  color: rgba(255, 255, 255, 0.445);
 }
 
 @keyframes surgir2 {

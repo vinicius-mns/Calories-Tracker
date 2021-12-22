@@ -158,7 +158,6 @@ textarea :focus {
   font-size: 30px; 
   text-align: center;
   animation: spin 10s infinite linear, surgir 0.5s forwards ;
-  color: rgba(255, 255, 255, 0.445);
 }
 
 .nao::after {
@@ -166,7 +165,6 @@ textarea :focus {
   font-size: 30px;
   text-align: center;
   animation: spin 10s infinite linear, surgir 0.5s forwards ;
-  color: rgba(255, 255, 255, 0.445);
 }
 
 .deletModal {
@@ -234,7 +232,6 @@ textarea :focus {
 
 .deletModal h3, span {
   background-color: transparent;
-  color: black;
 }
 
 .deletModal div {
@@ -253,7 +250,6 @@ textarea :focus {
 
 .deletModalDesmontar h3, span {
   background-color: transparent;
-  color: black;
 }
 
 .deletModalDesmontar div {
@@ -323,7 +319,6 @@ textarea :focus {
 }
 
 .containerMonth .clearAll p {
-  color: black;
   font-size: 18px;
   font-weight: 100;
 }
