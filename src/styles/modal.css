@@ -305,24 +305,31 @@ textarea :focus {
 }
 
 .containerMonth {
-  background-color: transparent;
-  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  text-align: center;
+  flex-direction: column;
 }
+
 .containerMonth button {
-  background-color: rgba(255, 255, 255, 0.452);
-  margin-top: 5px;
-  margin-bottom: 5px;
-  width: 45%;
+  width: 43%;
+  margin: 10px;
+}
+
+.containerMonth .clearAll {
+  align-self: center;
+  background-color: rgb(221, 162, 162);
+  width: 90%;
+}
+
+.containerMonth .clearAll p {
+  color: black;
+  font-size: 18px;
+  font-weight: 100;
 }
 
 .titleModalMonth {
   background-color: transparent;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .titleModalMonth img {
@@ -331,6 +338,8 @@ textarea :focus {
 }
 
 .titleModalMonth button{
+  position: fixed;
+  right: 16px; 
   margin-top: 14px;
   width: 35px;
   height: 30px;

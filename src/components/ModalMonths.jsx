@@ -19,14 +19,16 @@ export default function ModalMonths({ closeMonthModal, setNewMonth }) {
               {
                 Object.keys(year[1]).map((month) => (
                   <button onClick={ setNewMonth } id={`${month} ${year[0]}`} >
-                    <h3 id={`${month} ${year[0]}`} >{`${month} ${year[0]}`}</h3>
+                    <h3 id={`${month} ${year[0]}`} >{ month }</h3>
                   </button>
                 ))
               }
-                <button onClick={ () => localStorage.clear() }>Clear All</button>
             </div>
             )
           }
+          <button className="clearAll" onClick={ () => localStorage.clear() }>
+            <p>Apagar tudo</p>
+          </button>
         </div>
       </div>
     )
