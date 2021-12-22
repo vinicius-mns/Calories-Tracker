@@ -24,6 +24,7 @@ export default function Calendar({ monthModal, closeMonthModal }) {
   const [key, setKey] = useState('')
   const [keyDay, setKeyDay] = useState('')
   const [modalDeletClass, setModalDeletClass] = useState('deletModal')
+  const [year, setYear] = useState(new Date().getFullYear())
 
   function clickOnDay({ target: { id } }) {
     if( id.length > 5 ) {
@@ -170,14 +171,16 @@ export default function Calendar({ monthModal, closeMonthModal }) {
 
   function setNewMonth({ target: { id } }) {
     const array = id.split(' ')
-    history.push(`/calendar_tracker/${array[0]}`)
+    const mes = array[0]
+    const ano = array[1]
+    history.push(`/calendar_tracker/${mes}`)
     setPath(history.location.pathname.split('/')[2])
+    setYear(ano)
     closeMonthModal()
   }
 
   useEffect(() => {
-    const ano = new Date().getFullYear()
-    const obj = handleMonth(ano, path)
+    const obj = handleMonth(year, path)
     const keyStorage = obj.result.storage
     const days = obj.result.days
 
