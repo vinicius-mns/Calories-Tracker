@@ -1,5 +1,5 @@
 .modal {
-  background-color: #ffdce5;
+  background-color: #aadcf7;
   position: fixed;
   left: 0;
   right: 0;
@@ -31,7 +31,7 @@
 }
 
 .desmontar {
-  background-color: #ffdce5;
+  background-color: #aadcf7;
   position: fixed;
   left: 0;
   right: 0;
@@ -170,6 +170,7 @@ textarea :focus {
   font-size: 30px; 
   text-align: center;
   animation: spin 10s infinite linear, surgir 0.5s forwards ;
+  color: rgba(255, 255, 255, 0.445);
 }
 
 .nao::after {
@@ -177,11 +178,12 @@ textarea :focus {
   font-size: 30px;
   text-align: center;
   animation: spin 10s infinite linear, surgir 0.5s forwards ;
+  color: rgba(255, 255, 255, 0.445);
 }
 
 .deletModal {
   z-index: 110;
-  background-color: rgb(205, 241, 196);
+  background-color: #fcba84;
   position: fixed;
   left: 0;
   right: 0;
@@ -199,9 +201,10 @@ textarea :focus {
   animation: deletModalNascer 0.5s forwards;
 }
 
+
 .deletModalDesmontar {
   z-index: 110;
-  background-color: rgb(205, 241, 196);
+  background-color: #fcba84;
   position: fixed;
   left: 0;
   right: 0;
@@ -240,6 +243,7 @@ textarea :focus {
   width: 40%;
   margin-top: 20px;
   margin-bottom: 13px;
+  height: 46px;
 }
 
 .deletModal h3, span {
@@ -258,6 +262,7 @@ textarea :focus {
   width: 40%;
   margin-top: 20px;
   margin-bottom: 13px;
+  height: 46px;
 }
 
 .deletModalDesmontar h3, span {

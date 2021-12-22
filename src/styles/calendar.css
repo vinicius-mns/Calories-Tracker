@@ -26,13 +26,16 @@
 
 .yes::after {
   content: "\1F4AE";
+  color: rgba(255, 255, 255, 0.445);
   font-size: 1px;
   text-align: center;
   animation: spin2 3s  , surgir2 1s forwards ;
+
 }
 
 .no::after {
   content: "\1F338";
+  color: rgba(255, 255, 255, 0.445);
   font-size: 1px;
   text-align: center;
   animation: spin2 3s  , surgir2 1s forwards ;
