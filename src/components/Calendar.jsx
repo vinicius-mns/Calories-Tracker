@@ -8,7 +8,7 @@ import DeletModal from './DeletModal';
 import Modal from './Modal';
 import ModalMonths from './ModalMonths';
 
-export default function Calendar({ monthModal, closeMonthModal }) {
+export default function Calendar({ monthModal, closeMonthModal, toggleClass }) {
   const history = useHistory()
   const DAYS_OF_WEEk = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom']
 
@@ -40,7 +40,8 @@ export default function Calendar({ monthModal, closeMonthModal }) {
       setModal(true)
       diary(keyDay, id)
       setKeyDay(keyDay)
-    } 
+    }
+    toggleClass()
   }
 
   function tratamento() {
@@ -167,6 +168,7 @@ export default function Calendar({ monthModal, closeMonthModal }) {
       setExercise('')
       setKcal('')
     }, 400);
+    toggleClass()
   }
 
   function setNewMonth({ target: { id } }) {

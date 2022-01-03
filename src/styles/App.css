@@ -26,7 +26,7 @@ button {
 }
 
 textarea {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.322);
   font-family:'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   color: black;

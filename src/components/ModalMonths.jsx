@@ -42,7 +42,7 @@ export default function ModalMonths({ closeMonthModal, setNewMonth }) {
               {
                 Object.keys(year[1]).map((month) => (
                   <button onClick={ setNewMonth } id={`${month} ${year[0]}`} >
-                    <h3 id={`${month} ${year[0]}`} >{ month }</h3>
+                    <span id={`${month} ${year[0]}`} >{ month }</span>
                   </button>
                 ))
               }
