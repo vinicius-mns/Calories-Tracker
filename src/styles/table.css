@@ -1,18 +1,9 @@
 .guideContainer {
-  background-color: rgba(0, 0, 0, 0.123);
   width: 96%;
   margin-top: 20px;
   overflow-y: auto;
   overflow-x: hidden;
   height: 230px;
-}
-
-.guideContainer h2 {
-  color: white;
-}
-
-.guideContainer p {
-  color: white;
 }
 
 
@@ -23,6 +14,7 @@
 
 .guideContainer h2 {
   margin-left: 20px;
+  font-weight: 600;
 }
 
 .tableValues div {
@@ -43,7 +35,9 @@
 
 .tableValues p {
   margin-left: 8px;
+  font-weight: 600;
 }
+
 
 
 .simT::after {

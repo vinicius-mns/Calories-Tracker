@@ -22,14 +22,6 @@
   background-color: rgba(255, 255, 255, 0.466);
 }
 
-.modal h2, h3 {
-  color: #5a373d;
-}
-
-.desmontar h2, h3 {
-  color: #5a373d;
-}
-
 ::placeholder {
   color: #5a373d3f;
 }
@@ -427,6 +419,7 @@ textarea :focus {
 }
 
 .vidro {
+  border-radius: 0px;
   z-index: 3;
   top: 0;
   margin: 0;

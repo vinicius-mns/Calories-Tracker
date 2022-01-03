@@ -21,7 +21,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 22px;
+  margin-left: 3px;
 }
 
 .calendarTracker button h2 {
@@ -33,4 +33,5 @@
   background-color: transparent;
   z-index: 1;
   margin-top: 120px;
+  opacity: 40%;
 }
