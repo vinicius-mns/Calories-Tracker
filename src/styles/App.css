@@ -27,6 +27,10 @@ button {
 
 textarea {
   background-color: white;
+  font-family:'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color: black;
+  font-weight: 900;
 }
 
 div {
