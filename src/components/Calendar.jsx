@@ -79,15 +79,16 @@ export default function Calendar({ monthModal, closeMonthModal, toggleClass }) {
 
       if (kcal()) {
         const value = array[index - 1]
+        setKcal(value)
 
-        value < 200 && setKcal('aa')
-        value >= 200 && setKcal('bb')
-        value >= 400 && setKcal('cc')
-        value >= 600 && setKcal('dd')
-        value >= 800 && setKcal('ee')
-        value >= 1000 && setKcal('ff')
-        value >= 1200 && setKcal('gg')
-        value >= 2500 && setKcal('ii')
+        // value < 200 && setKcal('aa')
+        // value >= 200 && setKcal('bb')
+        // value >= 400 && setKcal('cc')
+        // value >= 600 && setKcal('dd')
+        // value >= 800 && setKcal('ee')
+        // value >= 1000 && setKcal('ff')
+        // value >= 1200 && setKcal('gg')
+        // value >= 2500 && setKcal('ii')
       }
     })
 
@@ -225,7 +226,7 @@ export default function Calendar({ monthModal, closeMonthModal, toggleClass }) {
         {
           arrayDays.map((day) => <button onClick={clickOnDay} >
             {
-              typeof (day) === 'object' ? <span id={day} className={`circulo2 ${day[0]} ${day[1]}`} />
+              typeof (day) === 'object' ? <span id={day}>{day[0]}({day[3]})</span>
                 : <p id={day}>{day}</p>
             }
           </button>)
