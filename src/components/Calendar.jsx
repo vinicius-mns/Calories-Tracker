@@ -226,7 +226,7 @@ export default function Calendar({ monthModal, closeMonthModal, toggleClass }) {
         {
           arrayDays.map((day) => <button onClick={clickOnDay} >
             {
-              typeof (day) === 'object' ? <span id={day}>{day[0]}({day[3]})</span>
+              typeof (day) === 'object' ? <span id={day}>{day[0]}</span>
                 : <p id={day}>{day}</p>
             }
           </button>)
